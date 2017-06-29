@@ -4,8 +4,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT
 
 Slide menu ,written in Swift 3.0, inspired by facebook app.
-![screenshot](/Users/sakethmanemala/Desktop/menu.png)
-![screenshot](/Users/sakethmanemala/Desktop/home.png)
+![screenshot](https://raw.github.com/saketh93/SlideMenu/master/ScreenShots/menu.png)
+![screenshot](https://raw.github.com/saketh93/SlideMenu/master/ScreenShots/home.png)
+![screenshot](https://raw.github.com/saketh93/SlideMenu/master/ScreenShots/addition.png)
 
-##License
+## License
 `SlideMenu` is distributed under the terms and conditions of the [MIT license](https://github.com/saketh93/SlideMenu/blob/master/LICENSE)
