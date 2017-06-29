@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -173,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pS6-H1-M4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3056.8000000000002" y="207.34632683658174"/>
+            <point key="canvasLocation" x="4703" y="-477"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="mri-XX-A79">
@@ -191,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhN-lC-Guj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2824.8000000000002" y="-441.22938530734638"/>
+            <point key="canvasLocation" x="3009" y="242"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="msm-fP-7Vl">
@@ -247,7 +246,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem prompt="        " id="t9H-ha-WQl">
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="ZqD-Cj-ETK">
+                                        <barButtonItem key="leftBarButtonItem" title="❮  Back" id="ZqD-Cj-ETK">
                                             <connections>
                                                 <action selector="backButtonClicked:" destination="QPF-mi-gtL" id="N0P-YW-N9a"/>
                                             </connections>
@@ -313,7 +312,7 @@
                                 <items>
                                     <navigationItem prompt="              " id="pqv-B1-T9a">
                                         <barButtonItem key="backBarButtonItem" title="Back" id="cHd-Gg-Pj9"/>
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="bzR-mU-7JB">
+                                        <barButtonItem key="leftBarButtonItem" title="❮  Back" id="bzR-mU-7JB">
                                             <connections>
                                                 <action selector="backButtonClicked:" destination="B5t-hO-Ha4" id="ieu-ob-WXJ"/>
                                             </connections>
@@ -339,7 +338,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rMV-q4-fBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5601" y="242"/>
+            <point key="canvasLocation" x="5601" y="-195"/>
+        </scene>
+        <!--Right Menu View Controller-->
+        <scene sceneID="wJl-oY-D7v">
+            <objects>
+                <viewController storyboardIdentifier="RightMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GIj-Qs-8Y3" customClass="RightMenuViewController" customModule="SlideMenu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cap-UK-QD0"/>
+                        <viewControllerLayoutGuide type="bottom" id="erL-Gb-65o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bol-OU-beH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s9k-EV-Xqt">
+                                <rect key="frame" x="140" y="0.0" width="235" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="gpf-Up-KoD" detailTextLabel="hbh-JB-prK" style="IBUITableViewCellStyleSubtitle" id="lN4-P7-gdf">
+                                        <rect key="frame" x="0.0" y="28" width="235" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lN4-P7-gdf" id="tzL-n2-ZGR">
+                                            <rect key="frame" x="0.0" y="0.0" width="235" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gpf-Up-KoD">
+                                                    <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hbh-JB-prK">
+                                                    <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="GIj-Qs-8Y3" id="RGl-mu-Pgq"/>
+                                    <outlet property="delegate" destination="GIj-Qs-8Y3" id="adl-UT-nze"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="s9k-EV-Xqt" secondAttribute="trailing" id="61V-Q5-fbr"/>
+                            <constraint firstItem="s9k-EV-Xqt" firstAttribute="leading" secondItem="Bol-OU-beH" secondAttribute="leading" constant="140" id="I66-WR-aFL"/>
+                            <constraint firstItem="erL-Gb-65o" firstAttribute="top" secondItem="s9k-EV-Xqt" secondAttribute="bottom" id="Vwg-bG-Gl5"/>
+                            <constraint firstItem="s9k-EV-Xqt" firstAttribute="top" secondItem="Bol-OU-beH" secondAttribute="top" id="hCv-CD-LSp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="s9k-EV-Xqt" id="RLg-RM-fcN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kMc-8b-48s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4703.1999999999998" y="976.46176911544239"/>
         </scene>
         <!--Electronics View Controller-->
         <scene sceneID="FEN-Cf-H4A">
@@ -377,7 +439,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem prompt="                " id="THf-Wv-f02">
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="eqY-jj-VsY">
+                                        <barButtonItem key="leftBarButtonItem" title="❮  Back" id="eqY-jj-VsY">
                                             <connections>
                                                 <action selector="backButtonClicked:" destination="Rgp-46-gej" id="j8r-cX-SpA"/>
                                             </connections>
@@ -403,7 +465,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLD-Ho-3pE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4500" y="914"/>
+            <point key="canvasLocation" x="5601" y="559"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fyZ-w7-OfJ">

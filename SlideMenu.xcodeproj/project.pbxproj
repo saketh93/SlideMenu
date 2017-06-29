@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09662C7D1F050CF5009F5812 /* RightMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09662C7C1F050CF5009F5812 /* RightMenuViewController.swift */; };
 		09FE08A41F037BDD00B15EF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FE08A31F037BDD00B15EF5 /* AppDelegate.swift */; };
 		09FE08AB1F037BDD00B15EF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09FE08AA1F037BDD00B15EF5 /* Assets.xcassets */; };
 		09FE08AE1F037BDD00B15EF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FE08AC1F037BDD00B15EF5 /* LaunchScreen.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09662C7C1F050CF5009F5812 /* RightMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightMenuViewController.swift; sourceTree = "<group>"; };
 		09FE08A01F037BDD00B15EF5 /* SlideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FE08A31F037BDD00B15EF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09FE08AA1F037BDD00B15EF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,16 +114,16 @@
 			isa = PBXGroup;
 			children = (
 				09FE08A31F037BDD00B15EF5 /* AppDelegate.swift */,
-				09FE08D31F037D1500B15EF5 /* HomeViewController.swift */,
+				09FE08E21F03BE5200B15EF5 /* ViewController.swift */,
 				09FE08AA1F037BDD00B15EF5 /* Assets.xcassets */,
 				09FE08E41F03C85B00B15EF5 /* Main.storyboard */,
 				09FE08AC1F037BDD00B15EF5 /* LaunchScreen.storyboard */,
 				09FE08AF1F037BDD00B15EF5 /* Info.plist */,
+				09662C7C1F050CF5009F5812 /* RightMenuViewController.swift */,
 				09FE08D11F037C7D00B15EF5 /* ContainerViewController.swift */,
 				09FE08D51F037DA900B15EF5 /* MenuViewController.swift */,
 				09FE08D71F037FE400B15EF5 /* Extensions.swift */,
 				09FE08E11F03B47700B15EF5 /* Menu Items */,
-				09FE08E21F03BE5200B15EF5 /* ViewController.swift */,
 			);
 			path = SlideMenu;
 			sourceTree = "<group>";
@@ -147,6 +149,7 @@
 		09FE08E11F03B47700B15EF5 /* Menu Items */ = {
 			isa = PBXGroup;
 			children = (
+				09FE08D31F037D1500B15EF5 /* HomeViewController.swift */,
 				09FE08DB1F03B38E00B15EF5 /* BooksViewController.swift */,
 				09FE08DD1F03B3A400B15EF5 /* FashionViewController.swift */,
 				09FE08DF1F03B3B300B15EF5 /* ElectronicsViewController.swift */,
@@ -222,6 +225,7 @@
 				TargetAttributes = {
 					09FE089F1F037BDD00B15EF5 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5C5KD3L8HB;
 						ProvisioningStyle = Automatic;
 					};
 					09FE08B31F037BDD00B15EF5 = {
@@ -292,6 +296,7 @@
 				09FE08D21F037C7D00B15EF5 /* ContainerViewController.swift in Sources */,
 				09FE08A41F037BDD00B15EF5 /* AppDelegate.swift in Sources */,
 				09FE08E31F03BE5200B15EF5 /* ViewController.swift in Sources */,
+				09662C7D1F050CF5009F5812 /* RightMenuViewController.swift in Sources */,
 				09FE08D41F037D1500B15EF5 /* HomeViewController.swift in Sources */,
 				09FE08E01F03B3B300B15EF5 /* ElectronicsViewController.swift in Sources */,
 				09FE08D61F037DA900B15EF5 /* MenuViewController.swift in Sources */,
@@ -446,7 +451,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5C5KD3L8HB;
 				INFOPLIST_FILE = SlideMenu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Saketh.SlideMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -458,7 +465,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5C5KD3L8HB;
 				INFOPLIST_FILE = SlideMenu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Saketh.SlideMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -539,6 +548,7 @@
 				09FE08CA1F037BDD00B15EF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		09FE08CB1F037BDD00B15EF5 /* Build configuration list for PBXNativeTarget "SlideMenuTests" */ = {
 			isa = XCConfigurationList;
@@ -547,6 +557,7 @@
 				09FE08CD1F037BDD00B15EF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		09FE08CE1F037BDD00B15EF5 /* Build configuration list for PBXNativeTarget "SlideMenuUITests" */ = {
 			isa = XCConfigurationList;
@@ -555,6 +566,7 @@
 				09FE08D01F037BDD00B15EF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

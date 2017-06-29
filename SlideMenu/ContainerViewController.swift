@@ -11,7 +11,8 @@ import QuartzCore
 
 enum SlideOutState {
     case collapsed
-    case expanded
+    case expandLeft
+    case expandRight
 }
 
 class ContainerViewController: UIViewController,HomeViewControllerDelegate,UIGestureRecognizerDelegate {
@@ -25,9 +26,9 @@ class ContainerViewController: UIViewController,HomeViewControllerDelegate,UIGes
             showShadowForCenterViewController(shouldShowShadow)
         }
     }
-    var leftViewController: MenuViewController?
+    var leftViewController: MenuViewController? /*for left menu */
+    var rightViewController: RightMenuViewController?/* for right menu , modify this as per your */
     // change this value to adjust width of Corespoding VC
-    
     let centerPanelExpandedOffset: CGFloat = 125
     var opacityView = UIView()
     
@@ -56,17 +57,28 @@ class ContainerViewController: UIViewController,HomeViewControllerDelegate,UIGes
     // MARK: HomeViewController delegate methods
     
     func toggleLeftPanel() {
-        let notAlreadyExpanded = (currentState != .expanded)
+        let notAlreadyExpanded = (currentState != .expandLeft)
         if notAlreadyExpanded {
             addLeftPanelViewController()
         }
         animateLeftPanel(notAlreadyExpanded)
     }
     
+    func toggleRightPanel() {
+        let notAlreadyExpanded = (currentState != .expandRight)
+        if notAlreadyExpanded {
+            addRightPanelViewController()
+        }
+        animateRightPanel(notAlreadyExpanded)
+    }
+
     func collapseSidePanels() {
+        
         switch (currentState) {
-        case .expanded:
+        case .expandLeft:
             toggleLeftPanel()
+        case .expandRight:
+            toggleRightPanel()
         default:
             break
         }
@@ -83,11 +95,32 @@ class ContainerViewController: UIViewController,HomeViewControllerDelegate,UIGes
             // view.insertSubview(opacityView, atIndex: 1)
             centerViewController.view.addSubview(opacityView)
             // view.addSubview(opacityView)
-            addChildSidePanelController(leftViewController!)
+            addLeftChildSidePanelController(leftViewController!)
         }
     }
     
-    func addChildSidePanelController(_ sidePanelController: MenuViewController) {
+    func addRightPanelViewController() {
+        if (rightViewController == nil) {
+            rightViewController = UIStoryboard.rightViewController()
+            //under testing
+            opacityView = UIView(frame: CGRect(x: self.view.frame.size.width, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+            opacityView.backgroundColor = UIColor.clear
+            opacityView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
+            opacityView.layer.opacity = 0.8
+            // view.insertSubview(opacityView, atIndex: 1)
+            centerViewController.view.addSubview(opacityView)
+            // view.addSubview(opacityView)
+            addRightChildSidePanelController(rightViewController!)
+        }
+    }
+
+    func addLeftChildSidePanelController(_ sidePanelController: MenuViewController) {
+        sidePanelController.delegate = centerViewController
+        view.insertSubview(sidePanelController.view, at: 0)
+        addChildViewController(sidePanelController)
+        sidePanelController.didMove(toParentViewController: self)
+    }
+    func addRightChildSidePanelController(_ sidePanelController: RightMenuViewController) {
         sidePanelController.delegate = centerViewController
         view.insertSubview(sidePanelController.view, at: 0)
         addChildViewController(sidePanelController)
@@ -96,8 +129,8 @@ class ContainerViewController: UIViewController,HomeViewControllerDelegate,UIGes
     
     func animateLeftPanel(_ shouldExpand: Bool) {
         if (shouldExpand) {
-            currentState = .expanded
-            animateCenterPanelXPosition(250)
+            currentState = .expandLeft
+            animateCenterPanelXPosition(self.view.frame.size.width/2 + centerPanelExpandedOffset/2) // change it dynamically as per your requirement
         } else {
             animateCenterPanelXPosition(0) { finished in
                 self.currentState = .collapsed
@@ -108,9 +141,22 @@ class ContainerViewController: UIViewController,HomeViewControllerDelegate,UIGes
         }
     }
     
+    func animateRightPanel(_ shouldExpand: Bool) {
+        if shouldExpand {
+            currentState = .expandRight
+            animateCenterPanelXPosition(-centerNavigationController.view.frame.width + centerPanelExpandedOffset) // change it dynamically as per your requirement
+        } else {
+            animateCenterPanelXPosition(0) { finished in
+                self.currentState =  .collapsed
+                self.opacityView.removeFromSuperview()
+                self.rightViewController?.view.removeFromSuperview()
+                self.rightViewController = nil;
+            }
+        }
+    }
     
     func animateCenterPanelXPosition(_ targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: {
             self.centerNavigationController.view.frame.origin.x = targetPosition
         }, completion: completion)
     }
@@ -135,19 +181,30 @@ class ContainerViewController: UIViewController,HomeViewControllerDelegate,UIGes
                     if (gestureIsDraggingFromLeftToRight) {
                         addLeftPanelViewController()
                         showShadowForCenterViewController(true)
-                        currentState = .expanded
+                        currentState = .expandLeft
+                    }else {
+                        /* commment below lines if you use right menu*/
+                        addRightPanelViewController()
+                        showShadowForCenterViewController(true)
+                        currentState =  .expandRight
                     }
                 }
             case .changed:
-                if (currentState == .expanded){
-                    
-                    //                print(recognizer.velocityInView(view).x)
-                    //                recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
-                    //                recognizer.setTranslation(CGPointZero, inView: view)
-                    
+                if (currentState == .expandLeft){
+                    /* commment below lines if you use left menu*/
+
                     let screen_center = recognizer.view!.frame.width/2
                     let new_center = recognizer.view!.center.x+recognizer.translation(in: view).x
                     if(screen_center <= new_center)
+                    {
+                        recognizer.view!.center.x = new_center
+                        recognizer.setTranslation(CGPoint.zero, in: view)
+                    }
+                }else if currentState == .expandRight{
+                    /* commment below lines if you use right menu*/
+                    let screen_center = recognizer.view!.frame.width/2
+                    let new_center = recognizer.view!.center.x+recognizer.translation(in: view).x
+                    if(screen_center >= new_center)
                     {
                         recognizer.view!.center.x = new_center
                         recognizer.setTranslation(CGPoint.zero, in: view)
@@ -156,8 +213,16 @@ class ContainerViewController: UIViewController,HomeViewControllerDelegate,UIGes
             case .ended:
                 if (leftViewController != nil) {
                     // animate the side panel open or closed based on whether the view has moved more or less than halfway
-                    print(hasMovedGreaterThanHalfway)
-                    animateLeftPanel(hasMovedGreaterThanHalfway)
+                    if currentState ==  .expandLeft {
+                        /* commment below lines if you use left menu*/
+                        animateLeftPanel(hasMovedGreaterThanHalfway)
+                    }
+                }else if rightViewController != nil {
+                    if currentState == .expandRight {
+                        /* commment below lines if you use right menu*/
+                        let hasMovedGreaterThanHalfway = recognizer.view!.center.x < 0
+                        animateRightPanel(hasMovedGreaterThanHalfway)
+                    }
                 }
             default:
                 break
@@ -191,12 +256,10 @@ private extension UIStoryboard {
         return mainStoryboard().instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController
     }
     
-    //enable below for right menu
-    /*
-    class func rightViewController() -> MenuViewController? {
-        return   mainStoryboard().instantiateViewControllerWithIdentifier("RightViewController") as? MenuViewController
+    class func rightViewController() -> RightMenuViewController? {
+        return   mainStoryboard().instantiateViewController(withIdentifier: "RightMenuViewController") as? RightMenuViewController
     }
-    */
+    
     class func centerViewController() -> HomeViewController? {
         return mainStoryboard().instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
     }

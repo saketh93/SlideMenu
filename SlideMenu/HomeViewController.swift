@@ -11,7 +11,7 @@ import UIKit
 protocol HomeViewControllerDelegate {
     func toggleLeftPanel() /* toggle the navigation drawer from left to right */
     func collapseSidePanels() /* collapse the slide menu */
-   /* func toggleRightPanel() //  toggle navigation drawer from right to left */
+    func toggleRightPanel() /*  toggle navigation drawer from right to left */
 }
 
 class HomeViewController: UIViewController {
@@ -19,20 +19,19 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        // add right menu if needed
+        
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     @IBAction func slideMenuButtonClicked(_ sender: UIBarButtonItem) {
         delegate?.toggleLeftPanel()
-        print("Hello")
     }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -42,5 +41,4 @@ class HomeViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
